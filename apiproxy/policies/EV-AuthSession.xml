@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-AuthSession">
+    <DisplayName>EV-AuthSession</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="app_client_id">
+            <JSONPath>$.app_client_id</JSONPath>
+        </Variable>
+        <Variable name="app_redirect_uri">
+            <JSONPath>$.app_redirect_uri</JSONPath>
+        </Variable>
+        <Variable name="app_response_type">
+            <JSONPath>$.app_response_type</JSONPath>
+        </Variable>
+        <Variable name="app_state">
+            <JSONPath>$.app_state</JSONPath>
+        </Variable>
+        <Variable name="app_scope">
+            <JSONPath>$.app_scope</JSONPath>
+        </Variable>
+        <Variable name="app_nonce">
+            <JSONPath>$.app_nonce</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">session_payload</Source>
+    <VariablePrefix/>
+</ExtractVariables>

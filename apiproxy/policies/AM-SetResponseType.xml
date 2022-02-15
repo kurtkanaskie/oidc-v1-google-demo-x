@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetResponseType">
+    <DisplayName>AM-SetResponseType</DisplayName>
+    <Properties/>
+    <!-- OAuth policy needs a variable with either code or token in it. -->
+    <AssignVariable>
+        <Name>app_response_type_code</Name>
+        <Value>code</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

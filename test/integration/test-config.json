@@ -1,0 +1,9 @@
+{
+    "apiconfig": {
+        "domain": "API_NORTHBOUND_DOMAIN",
+        "basepath": "/oidc-google/v1/oauth",
+        "apiproxy": "oidc-v1-google-demo",
+		"product":"oidc-v1-google-demo-product-APIGEE_ENVIRONMENT",
+        "app":"oidc-v1-google-demo-app-APIGEE_ENVIRONMENT"
+    }
+}

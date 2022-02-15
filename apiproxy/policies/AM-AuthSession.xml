@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-AuthSession">
+    <DisplayName>AM-AuthSession</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">{
+  "app_client_id" : "{app_client_id}",
+  "app_redirect_uri" : "{app_redirect_uri}",
+  "app_response_type" : "{app_response_type}",
+  "app_state" : "{app_state}",
+  "app_scope" : "{app_scope}",
+  "app_nonce" : "{app_nonce}",
+  "app_profile" : "{app_profile}"
+}</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="true">session.request</AssignTo>
+</AssignMessage>

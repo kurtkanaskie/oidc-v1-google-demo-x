@@ -1,0 +1,52 @@
+[
+    {
+      "name": "oidc-v1-google-demo",
+      "encrypted": false,
+      "entry": [
+        {
+          "name": "idp_edge_callback",
+          "value": "https://ORG-ENV.apigee.net/oidc-google/v1/oauth/callback"
+        },
+        {
+          "name": "idp_client_id",
+          "value": "GOOGLE CLIENT ID HERE"
+        },
+        {
+          "name": "idp_client_secret",
+          "value": "GOOGLE CLIENT SECRET HERE"
+        },
+        {
+          "name": "idp_auth_endpoint",
+          "value": "https://accounts.google.com/o/oauth2/v2/auth"
+        },
+        {
+          "name": "idp_token_endpoint",
+          "value": "https://oauth2.googleapis.com/token"
+        },
+        {
+          "name": "idp_userinfo_endpoint",
+          "value": "https://openidconnect.googleapis.com/v1/userinfo"
+        },
+        {
+          "name": "idp_revoke_endpoint",
+          "value": "https://oauth2.googleapis.com/revoke"
+        },
+        {
+          "name": "idp_scope",
+          "value": "openid profile email https://www.googleapis.com/auth/cloud-platform"
+        },
+        {
+          "name": "idp_prompt",
+          "value": "consent"
+        },
+        {
+          "name": "token_expires_in",
+          "value": "3600042"
+        },
+        {
+          "name": "refresh_token_expires_in",
+          "value": "28800042"
+        }
+      ]
+    }
+]

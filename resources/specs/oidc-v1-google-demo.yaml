@@ -1,0 +1,87 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: oidc-v1-google-demo
+  description: OIDC protected resources using Authorization Code security.
+  contact:
+    email: kurtkanaskie@google.com
+servers:
+  - url: https://amer-demo13-test.apigee.net/oidc-google/v1/oauth
+paths:
+  /userinfo:
+    get:
+      operationId: getUserinfo
+      description: Returns user information for the authenticated user
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserinfoResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      deprecated: false
+  /revoke:
+    post:
+      operationId: postRevoke
+      description: Revokes and access token provided in Authorization header
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RevokeResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      deprecated: false
+security:
+  - AuthorizationCode: []
+components:
+  securitySchemes:
+    AuthorizationCode:
+      type: oauth2
+      description: See https://developer.kurtkanaskie.net/docs/get-started-authoriztion-code
+      flows: 
+        authorizationCode:
+          tokenUrl: https://api-test.kurtkanaskie.net/oidc-google/v1/oauth/token
+          authorizationUrl: https://api-test.kurtkanaskie.net/oidc-google/v1/oauth/authorize
+          scopes: {}
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          example: "401.004"
+          description: Error code
+          type: string
+        message:
+          example: Invalid API Key
+          description: Error message
+          type: string
+        info:
+          example: https://developer.company.com/errors#401.004
+          description: Where to find more inforamation
+          type: string
+    UserinfoResponse:
+      type: object
+      properties:
+        name:
+          example: Kurt Kanaskie
+          description: The full name of the user.
+          type: string
+        email:
+          example: kurtkanaskie@google.com
+          description: The email for the user.
+          type: string
+    RevokeResponse:
+      type: object

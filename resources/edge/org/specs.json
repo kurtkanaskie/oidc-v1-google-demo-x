@@ -1,0 +1,6 @@
+[
+   {
+      "name":"oidc-v1-google-demo",
+      "file":"./resources/specs/oidc-v1-google-demo.yaml"
+   }
+]

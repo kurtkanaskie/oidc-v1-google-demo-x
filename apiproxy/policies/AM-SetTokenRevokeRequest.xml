@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetTokenRevokeRequest">
+    <DisplayName>AM-SetTokenRevokeRequest</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Content_Type">application/x_www_form_urlencoded</Header>
+            <Header name="Accept">application/json</Header>
+        </Headers>
+        <FormParams>
+            <FormParam name="token">{accesstoken.external_access_token}</FormParam>
+        </FormParams>
+        <Verb>POST</Verb>
+    </Set>
+    <AssignVariable>
+        <Name>idp_target_url</Name>
+        <Ref>idp_revoke_endpoint</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

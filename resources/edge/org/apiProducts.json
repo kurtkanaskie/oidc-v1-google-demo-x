@@ -1,0 +1,20 @@
+[
+    {
+      "name": "oidc-v1-google-demo-product-APIGEE_ENVIRONMENT",
+      "displayName": "oidc-v1-google-demo-product-APIGEE_ENVIRONMENT",
+      "approvalType": "auto",
+      "attributes": [
+         {
+         "name": "access",
+         "value": "public"
+         }
+      ],
+      "description": "oidc-v1-google-demo",
+      "environments": [
+         "APIGEE_ENVIRONMENT"
+      ],
+      "operationGroup": {
+         "operationConfigType": "proxy"
+      }
+   }
+]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessTokenRefresh">
+    <DisplayName>OA-GenerateAccessTokenRefresh</DisplayName>
+    <Properties/>
+    <Attributes>
+        <Attribute name="external_access_token" ref="ext_access_token"/>
+        <Attribute name="external_refresh_token" ref="ext_refresh_token"/>
+        <Attribute name="external_id_token" ref="ext_id_token"/>
+    </Attributes>
+    <Operation>RefreshAccessToken</Operation>
+    <!-- default 30 minutes -->
+    <ExpiresIn ref="token_expires_in">1800000</ExpiresIn>
+    <!-- default 8 hours -->
+    <RefreshTokenExpiresIn ref="refresh_token_expires_in">28800000</RefreshTokenExpiresIn>
+    <GenerateResponse enabled="false"/>
+</OAuthV2>

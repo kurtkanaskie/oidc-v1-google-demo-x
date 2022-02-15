@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-AuthorizeParams">
+    <DisplayName>EV-AuthorizeParams</DisplayName>
+    <Properties/>
+    <QueryParam name="client_id">
+        <Pattern ignoreCase="true">{app_client_id}</Pattern>
+    </QueryParam>
+    <QueryParam name="redirect_uri">
+        <Pattern ignoreCase="true">{app_redirect_uri}</Pattern>
+    </QueryParam>
+    <QueryParam name="response_type">
+        <Pattern ignoreCase="true">{app_response_type}</Pattern>
+    </QueryParam>
+    <QueryParam name="state">
+        <Pattern ignoreCase="true">{app_state}</Pattern>
+    </QueryParam>
+    <QueryParam name="scope">
+        <Pattern ignoreCase="true">{app_scope}</Pattern>
+    </QueryParam>
+    <QueryParam name="nonce">
+        <Pattern ignoreCase="true">{app_nonce}</Pattern>
+    </QueryParam>
+    <QueryParam name="prompt">
+        <Pattern ignoreCase="true">{app_prompt}</Pattern>
+    </QueryParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Source clearPayload="false">request</Source>
+</ExtractVariables>

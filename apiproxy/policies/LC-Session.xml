@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache async="false" continueOnError="false" enabled="true" name="LC-Session">
+    <DisplayName>LC-Session</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix/>
+        <KeyFragment ref="messageid"/>
+    </CacheKey>
+    <CacheResource>oidc-v1-google-demo-sessions</CacheResource>
+    <Scope>Proxy</Scope>
+    <AssignTo>session_payload</AssignTo>
+</LookupCache>

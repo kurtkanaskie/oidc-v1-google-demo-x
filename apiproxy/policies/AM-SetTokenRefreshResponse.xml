@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetTokenRefreshResponse">
+    <DisplayName>AM-SetTokenRefreshResponse</DisplayName>
+    <Set>
+        <Headers/>
+        <QueryParams/>
+        <FormParams/>
+        <Path/>
+        <Payload contentType="application/json">
+{
+    "client_id": "{apigee.client_id}",
+    "token_type": "Bearer",
+    "access_token": "{apigee.access_token}",
+    "expires_in": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.expires_in}",
+    "status": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.status}",
+    "scope": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.scope}",
+    "refresh_token": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token}",
+    "refresh_token_expires_in": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token_expires_in}",
+    "refresh_token_status": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token_status}",
+    "refresh_count": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_count}",
+    
+    "external_access_token": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.external_access_token}",
+    "external_id_token": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.external_id_token}",
+    "external_refresh_token": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.external_refresh_token}",
+    
+    "api_product_list": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.api_product_list}",
+    "api_product_list_json": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.api_product_list_json}",
+    "application_name": "{oauthv2accesstoken.OA-GenerateAccessTokenRefresh.application_name}",
+    "developer.email": "{apigee.developer.email}",
+    "organization_name": "{organization.name}"
+}
+</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

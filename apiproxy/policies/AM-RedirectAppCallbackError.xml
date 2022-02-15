@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectAppCallbackError">
+    <DisplayName>AM-RedirectAppCallbackError</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Location">{app_redirect_uri}?error={app_error}&amp;error_description={error_description}&amp;state={app_state}&amp;error_uri=https://developers.exco.com</Header>
+            <Header name="Access-Control-Allow-Origin">*</Header>
+            <Header name="Access-Control-Allow-Methods">POST, GET, OPTIONS</Header>
+            <Header name="Access-Control-Allow-Headers">Accept, Content-Type, connection, content-length, Authorization, Location</Header>
+            <Header name="Access-Control-Allow-Credentials">true</Header>
+        </Headers>
+        <StatusCode>302</StatusCode>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

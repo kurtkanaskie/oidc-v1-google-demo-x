@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyAPIKey async="false" continueOnError="false" enabled="false" name="VA-FormParam">
+    <!-- NOTE: SmartDocs Drupal and Integrated use Authorization header, not form params -->
+    <!-- Disabling this check, will need to detect both situations -->
+    <DisplayName>VA-FormParam</DisplayName>
+    <Properties/>
+    <APIKey ref="request.formparam.client_id"/>
+</VerifyAPIKey>

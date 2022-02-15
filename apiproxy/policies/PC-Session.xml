@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-Session">
+    <DisplayName>PC-Session</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix/>
+        <KeyFragment ref="messageid"/>
+    </CacheKey>
+    <CacheResource>oidc-v1-google-demo-sessions</CacheResource>
+    <Scope>Proxy</Scope>
+    <ExpirySettings>
+        <TimeoutInSec>3600</TimeoutInSec>
+    </ExpirySettings>
+    <Source>session.request.content</Source>
+</PopulateCache>

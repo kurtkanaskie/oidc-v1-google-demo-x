@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectAppCallback">
+    <DisplayName>AM-RedirectAppCallback</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Location">{app_redirect_uri}?code={oauthv2authcode.OA-GenerateAuthCode.code}&amp;client_id={app_client_id}&amp;scope={app_scope}&amp;response_type={app_response_type}&amp;state={app_state}</Header>
+            <Header name="Access-Control-Allow-Origin">*</Header>
+            <Header name="Access-Control-Allow-Methods">POST, GET, OPTIONS</Header>
+            <Header name="Access-Control-Allow-Headers">Accept, Content-Type, connection, content-length, Authorization, Location</Header>
+            <Header name="Access-Control-Allow-Credentials">true</Header>
+        </Headers>
+        <StatusCode>302</StatusCode>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>
