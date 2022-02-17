@@ -213,7 +213,6 @@
         <!-- Only route to target on these conditions, redirects are handled with noroute -->
         <Condition>(proxy.pathsuffix MatchesPath "/userinfo") or 
                    (proxy.pathsuffix MatchesPath "/revoke") or 
-                   (proxy.pathsuffix MatchesPath "/logout") or 
                    (proxy.pathsuffix MatchesPath "/token")
         </Condition>
         <TargetEndpoint>default</TargetEndpoint>
