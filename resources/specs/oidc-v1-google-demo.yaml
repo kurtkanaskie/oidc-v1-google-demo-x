@@ -6,7 +6,7 @@ info:
   contact:
     email: kurtkanaskie@google.com
 servers:
-  - url: https://amer-demo13-test.apigee.net/oidc-google/v1/oauth
+  - url: https://xapi-test.kurtkanaskie.net/oidc-google/v1/oauth
 paths:
   /userinfo:
     get:
@@ -50,11 +50,11 @@ components:
   securitySchemes:
     AuthorizationCode:
       type: oauth2
-      description: See https://developer.kurtkanaskie.net/docs/get-started-authoriztion-code
+      description: See https://developerx.kurtkanaskie.net/docs/get-started-authoriztion-code
       flows: 
         authorizationCode:
-          tokenUrl: https://api-test.kurtkanaskie.net/oidc-google/v1/oauth/token
-          authorizationUrl: https://api-test.kurtkanaskie.net/oidc-google/v1/oauth/authorize
+          tokenUrl: https://xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/token
+          authorizationUrl: https://xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/authorize
           scopes: {}
   schemas:
     ErrorResponse:
