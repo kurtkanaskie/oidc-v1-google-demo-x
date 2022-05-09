@@ -2,6 +2,7 @@
 <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessTokenRefresh">
     <DisplayName>OA-GenerateAccessTokenRefresh</DisplayName>
     <Properties/>
+    <!-- This doesn't work here, need to re-set the attributes in SetOAuthV2Info -->
     <Attributes>
         <Attribute name="external_access_token" ref="ext_access_token"/>
         <Attribute name="external_refresh_token" ref="ext_refresh_token"/>

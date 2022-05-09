@@ -140,6 +140,9 @@
                     <Name>EV-GetExternalTokenValues</Name>
                 </Step>
                 <Step>
+                    <Name>AM-ExternalRefreshToken</Name>
+                </Step>
+                <Step>
                     <Name>AM-SetRequest</Name>
                 </Step>
                 <Step>
@@ -150,6 +153,10 @@
                 </Step>
                 <Step>
                     <Name>OA-GenerateAccessTokenRefresh</Name>
+                </Step>
+                <Step>
+                    <Condition>(ext_refresh_token == null)</Condition>
+                    <Name>OA-SetRefreshTokenAttributes</Name>
                 </Step>
                 <Step>
                     <Name>AM-SetTokenRefreshResponse</Name>

@@ -37,13 +37,21 @@ This code is open source.
 ### GCP Project
 * Create a GCP Project and enable OAuth.
 * Add others to the project if desired (e.g. yourname+something@google.com)
-* Create a service account.
-* Download the keys.
+* Register an App to be used by the proxy to request tokens.
+  * Set the callback to be that of this OIDC proxy/callback (e.g. https://xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/callback)
+  * Save the Client ID and Secret for use in KVM.
 
-### Apigee
+### Apigee X
 * Create your Integrated Portal and set the App callback URL.
-* Copy kvms.json-dist to kvms.json and set values from your downloaded keys.
-* Build and deploy the proxy and associated artifacts, including the OAS.
+* Create and populate the KVM
+  * Via Maven using [apigee-api-facade](https://github.com/kurtkanaskie/apigee-api-facade-v1) (preferred)
+    * Deploy [apigee-api-facade](https://github.com/kurtkanaskie/apigee-api-facade-v1) in your org.
+    * In resources/edge/$ENV - copy kvms.json-dist and overwrite kvms.json then set values for client ID, secret and callback to this proxy.
+    * Use apigee-api-facade as the "apigee.hosturl" in pom.xml (change to your hostname)
+  * Via [kvm-admin-api](https://github.com/apigee/devrel/tree/main/references/kvm-admin-api)
+    * Deploy [kvm-admin-api](https://github.com/apigee/devrel/tree/main/references/kvm-admin-api) to your org.
+    * Use kvm-admin-v1 to set the values in the KVM using values from kvm-dist.json
+* Run maven to build and deploy the proxy and associated artifacts, including the OAS.
 * Publish the OAS to the Integrated Portal.
 
 ### Maven
@@ -51,34 +59,36 @@ Use maven to build and install the proxy, API product, App developer, App, downl
 Maven will also deploy the OAS to your Drupal 8 and Integrated portal.
 
 #### All at once
-* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapigee.smartdocs.config.options=update
+* mvn -P test install
 
 #### Just update the Drupal 8 API Specs
-* mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update -Ddeployment.suffix=
+* mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
 
 #### Just update the Integrated Portal API Specs
 Via process-resources after replacements or when in target
-* mvn -P test process-resources apigee-config:specs -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+* mvn -P test process-resources apigee-config:specs -Dapigee.config.options=update  -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
 * mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=target/resources/edge
 
 Via the source without replacements
 * mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
 
 ### Discrete Commands
-mvn -P "$ENV" jshint:lint
-mvn -P "$ENV" frontend:install-node-and-npm@install-node-and-npm
-mvn -P "$ENV" frontend:npm@npm-install
-mvn -P "$ENV" frontend:npm@apigeelint
-mvn -P "$ENV" frontend:npm@unit
-mvn -P "$ENV" resources:copy-resources@copy-resources
-mvn -P "$ENV" replacer:replace@replace
-mvn -P "$ENV" apigee-enterprise:configure
-mvn -P "$ENV" apigee-config:targetservers
-mvn -P "$ENV" apigee-config:resourcefiles
-mvn -P "$ENV" apigee-config:apiproducts
-mvn -P "$ENV" apigee-config:developers
-mvn -P "$ENV" apigee-config:apps
-mvn -P "$ENV" apigee-config:exportAppKeys
+mvn -P "$ENV" jshint:lint \
+mvn -P "$ENV" frontend:install-node-and-npm@install-node-and-npm \
+mvn -P "$ENV" frontend:npm@npm-install \
+mvn -P "$ENV" frontend:npm@apigeelint \
+mvn -P "$ENV" frontend:npm@unit \
+mvn -P "$ENV" resources:copy-resources@copy-resources \
+mvn -P "$ENV" replacer:replace@replace \
+mvn -P "$ENV" apigee-config:targetservers \
+mvn -P "$ENV" apigee-config:resourcefiles \
+mvn -P "$ENV" apigee-config:keyvaluemaps -Dapigee.config.options=sync apigee-config:keyvaluemaps \
+mvn -P "$ENV" apigee-enterprise:configure \
+mvn -P "$ENV" apigee-enterprise:deploy \
+mvn -P "$ENV" apigee-config:apiproducts \
+mvn -P "$ENV" apigee-config:developers \
+mvn -P "$ENV" apigee-config:apps \
+mvn -P "$ENV" apigee-config:exportAppKeys \
 mvn -P "$ENV" frontend:npm@integration
 
 ### Re-run integration tests

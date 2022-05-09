@@ -1,8 +1,8 @@
-<APIProxy revision="7" name="oidc-v1-google-demo">
+<APIProxy revision="19" name="oidc-v1-google-demo">
     <DisplayName>oidc-v1-google-demo</DisplayName>
-    <Description>GCP project &#34;Edge OIDC Demo&#34;. commit none from local branch by kurtkanaskie+cicd@google.com</Description>
-    <CreatedAt>1644949255092</CreatedAt>
-    <LastModifiedAt>1644949255092</LastModifiedAt>
+    <Description>GCP project "Edge OIDC Demo". @DESCRIPTION</Description>
+    <CreatedAt>1652109551312</CreatedAt>
+    <LastModifiedAt>1652109671059</LastModifiedAt>
     <BasePaths>/oidc-google/v1/oauth</BasePaths>
     <Policies>
         <Policy>RF-NotFound</Policy>
@@ -43,6 +43,8 @@
         <Policy>KV-Params</Policy>
         <Policy>AM-SetUserinfoRequest</Policy>
         <Policy>RF-NoRefresh</Policy>
+        <Policy>OA-SetRefreshTokenAttributes</Policy>
+        <Policy>AM-ExternalRefreshToken</Policy>
     </Policies>
     <ProxyEndpoints>
         <ProxyEndpoint>default</ProxyEndpoint>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-ExternalRefreshToken">
+    <AssignVariable>
+        <!-- Google does not generate a new refresh token - unless log out. To get a new refresh token need to login again -->
+        <!-- Set this to use what was passed in for OA-SetRefreshTokenAttributes -->
+        <Name>ext_refresh_token</Name>
+        <Value>NOT_SET</Value>
+        <Ref>oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

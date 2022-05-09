@@ -1,12 +1,8 @@
 [
     {
       "name": "oidc-v1-google-demo",
-      "encrypted": false,
+      "encrypted": true,
       "entry": [
-        {
-          "name": "idp_edge_callback",
-          "value": "https://ORG-ENV.apigee.net/oidc-google/v1/oauth/callback"
-        },
         {
           "name": "idp_client_id",
           "value": "GOOGLE CLIENT ID HERE"
@@ -14,6 +10,10 @@
         {
           "name": "idp_client_secret",
           "value": "GOOGLE CLIENT SECRET HERE"
+        },
+        {
+          "name": "idp_edge_callback",
+          "value": "https://ORG-ENV.apigee.net/oidc-google/v1/oauth/callback"
         },
         {
           "name": "idp_auth_endpoint",

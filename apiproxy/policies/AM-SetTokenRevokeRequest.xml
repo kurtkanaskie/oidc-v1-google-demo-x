@@ -9,6 +9,9 @@
         <FormParams>
             <FormParam name="token">{accesstoken.external_access_token}</FormParam>
         </FormParams>
+        <QueryParams>
+            <QueryParam name="test">{foo.external_access_token}</QueryParam>
+        </QueryParams>
         <Verb>POST</Verb>
     </Set>
     <AssignVariable>
