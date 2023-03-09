@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SetOAuthV2Info continueOnError="false" enabled="true" name="OA-SetRefreshTokenAttributes">
-    <!-- Need to re-set the attributes -->
-    <!-- https://cloud.google.com/apigee/docs/api-platform/reference/policies/oauthv2-policy#attributesattribute-displayingorhidingcustomattributesintheresponse -->
-    <AccessToken ref="apigee.access_token"/>
-    <Attributes>
-        <Attribute name="external_access_token" ref="ext_access_token"/>
-        <Attribute name="external_refresh_token" ref="ext_refresh_token">NO_VALUE</Attribute>
-        <Attribute name="external_id_token" ref="ext_id_token"/>
-    </Attributes>
+  <!-- Need to re-set the attributes -->
+  <!-- https://cloud.google.com/apigee/docs/api-platform/reference/policies/oauthv2-policy#attributesattribute-displayingorhidingcustomattributesintheresponse -->
+  <AccessToken ref="apigee.access_token"/>
+  <Attributes>
+    <Attribute name="external_access_token" ref="ext_access_token"/>
+    <Attribute name="external_refresh_token" ref="ext_refresh_token">NO_VALUE</Attribute>
+    <Attribute name="external_id_token" ref="ext_id_token"/>
+  </Attributes>
 </SetOAuthV2Info>

@@ -10,6 +10,15 @@ It provides the following endpoints
 
 The callback endpoint is used for the integration with GCP.
 
+**BEGIN BRANCH NOTE**: This branch shows:
+- How to use a KVM to look up custom values for an App for external client_id, client_secret and scopes, using the App client_id.
+- How to assocate custom attributes on an API Product for a KVM Map Name to support multiple external IdPs (e.g. OKTA, Google).
+- How to associate custom attributes on the App to hold external client_id, client_secret and scopes.
+
+The proxy PreFlow uses Conditions to get the App client_id using either Basic Auth, Verify API Key or Validate Access Token.
+
+**END BRANCH NOTE**
+
 See the [sequence diagram](oidc-v1-google-demo-wsd.png) for details on the interaction between Apigee and GCP.
 
 The solution demonstrates a full CI/CD lifecycle, apart from actually getting an access_token and using it in integration tests.

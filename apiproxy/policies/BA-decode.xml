@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BasicAuthentication continueOnError="true" enabled="true" name="BA-decode">
+    <Operation>Decode</Operation>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <User ref="client_id"/>
+    <Password ref="client_secret"/>
+    <Source>request.header.Authorization</Source>
+</BasicAuthentication>

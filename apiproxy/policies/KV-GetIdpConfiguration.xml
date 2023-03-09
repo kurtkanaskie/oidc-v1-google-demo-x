@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KV-Params" mapIdentifier="oidc-v1-google-demo">
-    <DisplayName>KV-Params</DisplayName>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KV-GetIdpConfiguration">
     <ExclusiveCache>false</ExclusiveCache>
     <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <MapName ref="idp_map_name"/>
     <Get assignTo="idp_auth_endpoint" index="1">
         <Key>
             <Parameter>idp_auth_endpoint</Parameter>

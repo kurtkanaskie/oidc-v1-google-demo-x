@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-get-client-id">
+    <!-- Get the client_id from either the formparam or queryparam -->
+    <QueryParam name="client_id">
+        <Pattern ignoreCase="true">{client_id}</Pattern>
+    </QueryParam>
+    <FormParam name="client_id">
+        <Pattern>{client_id}</Pattern>
+    </FormParam>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

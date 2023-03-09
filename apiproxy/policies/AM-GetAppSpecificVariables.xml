@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-GetAppSpecificVariables">
+    <!-- Custom Attribute on API Product -->
+    <!-- An API Product could have a custom attribute to hold the KVM <MapName> for multiple external IdP configurations -->
+    <!-- From Verify API Key -->
+    <AssignVariable>
+        <Name>idp_map_name</Name>
+        <Ref>verifyapikey.VA-Variable.apiproduct.IdPMapName</Ref>
+    </AssignVariable>
+    <!-- From Validate Access Token -->
+    <AssignVariable>
+        <Name>idp_map_name</Name>
+        <Ref>apiproduct.IdPMapName</Ref>
+    </AssignVariable>
+    <!-- Set default value if not on API Product -->
+    <AssignVariable>
+        <Name>idp_map_name</Name>
+        <Value>oidc-google-idp</Value>
+        <Ref>idp_map_name</Ref>
+    </AssignVariable>
+    <!-- Custom Attribute on App -->
+    <!-- Get custom attributes on App from Verify API Key -->
+    <AssignVariable>
+        <Name>custom_external_idp_client_id</Name>
+        <Ref>verifyapikey.VA-Variable.external_idp_client_id</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>custom_external_idp_client_secret</Name>
+        <Ref>verifyapikey.VA-Variable.external_idp_client_secret</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>custom_external_idp_scopes</Name>
+        <Ref>verifyapikey.VA-Variable.external_idp_scopes</Ref>
+    </AssignVariable>
+    <!-- Get custom attributes on App from Validate Access Token -->
+    <AssignVariable>
+        <Name>custom_external_idp_client_id</Name>
+        <Ref>app.external_idp_client_id</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>custom_external_idp_client_secret</Name>
+        <Ref>app.external_idp_client_secret</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>custom_external_idp_scopes</Name>
+        <Ref>app.external_idp_scopes</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -6,7 +6,50 @@
                 <Name>CORS</Name>
             </Step>
             <Step>
-                <Name>KV-Params</Name>
+                <!-- populates client_id but doesn't validate-->
+                <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize")</Condition>
+                <Name>EV-get-client-id</Name>
+            </Step>
+            <Step>
+                <!-- populates client_id but doesn't validate-->
+                <Condition>( (request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type == "authorization_code") )</Condition>
+                <Name>BA-decode</Name>
+            </Step>
+            <Step>
+                <!-- validates API key in client_id, makes custom attributes on API Product and App available -->
+                <Condition>
+                ( (request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize") )
+                or
+                ( (request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type == "authorization_code") )
+                </Condition>
+                <Name>VA-Variable</Name>
+            </Step>
+            <Step>
+                <!-- populates client_id and validates, makes custom attributes on API Product available but NOT from App  -->
+                <Condition>
+                ( (request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type == "refresh_token") )
+                or
+                ( (request.verb = "POST") and (proxy.pathsuffix MatchesPath "/revoke") )
+                or
+                ( (request.verb = "GET") and (proxy.pathsuffix MatchesPath "/userinfo") )
+                </Condition>
+                <Name>OA-VerifyAccessToken</Name>
+            </Step>
+            <Step>
+                <!-- This isn't needed if using the KVM to get the associated external_idp_client_id, external_idp_client_secret and external_idp_client_id_scopes from App -->
+                <!-- Get custom attribute "idp_map_name" from API Product and external_idp_client_id, external_idp_client_secret and external_idp_client_id_scopes from App -->
+                <Condition>not((request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback"))</Condition>
+                <Name>AM-GetAppSpecificVariables</Name>
+            </Step>
+            <Step>
+                <!-- Lookup external IdP configuration based on custom attribute "idp_map_name" from API Product -->
+                <Condition>not((request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback"))</Condition>
+                <Name>KV-GetIdpConfiguration</Name>
+            </Step>
+            <Step>
+                <!-- Lookup external IdP credentials by client_id -->
+                <Condition>not((request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback"))</Condition>
+                <Name>KV-IdpCredentialsByClientId</Name>
             </Step>
         </Request>
         <Response/>
@@ -75,7 +118,7 @@
             <Description/>
             <Request>
                 <Step>
-                    <Name>VA-FormParam</Name>
+                    <Name>VA-Variable</Name>
                 </Step>
                 <Step>
                     <Name>OA-GetAuthCodeAttributes</Name>
@@ -111,15 +154,13 @@
                     <Name>AM-SetTokenCodeResponse</Name>
                 </Step>
             </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/token") and 
-                       (request.verb = "POST") and 
-                       (request.formparam.grant_type == "authorization_code")</Condition>
+            <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type == "authorization_code")</Condition>
         </Flow>
         <Flow name="token - refresh">
             <Description/>
             <Request>
                 <Step>
-                    <Name>VA-FormParam</Name>
+                    <Name>VA-Variable</Name>
                 </Step>
                 <Step>
                     <Name>OA-GetRefreshTokenAttributes</Name>
@@ -162,9 +203,7 @@
                     <Name>AM-SetTokenRefreshResponse</Name>
                 </Step>
             </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/token") and 
-                       (request.verb = "POST") and 
-                       (request.formparam.grant_type == "refresh_token")</Condition>
+            <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token") and (request.formparam.grant_type == "refresh_token")</Condition>
         </Flow>
         <Flow name="userinfo">
             <Description/>
@@ -181,7 +220,7 @@
                     <Name>JS-SetUserinfoResponse</Name>
                 </Step>
             </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/userinfo") and (request.verb = "GET")</Condition>
+            <Condition> (request.verb = "GET") and (proxy.pathsuffix MatchesPath "/userinfo")</Condition>
         </Flow>
         <Flow name="revoke">
             <Description/>
@@ -197,7 +236,7 @@
                 </Step>
             </Request>
             <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/revoke") and (request.verb = "POST")</Condition>
+            <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/revoke")</Condition>
         </Flow>
         <Flow name="not found">
             <Description/>

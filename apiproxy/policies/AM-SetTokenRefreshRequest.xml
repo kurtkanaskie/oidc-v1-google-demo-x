@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetTokenRefreshRequest">
-    <DisplayName>AM-SetTokenRefreshRequest</DisplayName>
-    <Remove>
-        <Headers/>
-        <FormParams/>
-        <Payload/>
-    </Remove>
-    <Set>
-        <Headers>
-            <Header name="Content-Type">application/x-www-form-urlencoded</Header>
-            <Header name="Accept">application/json</Header>
-        </Headers>
-        <FormParams>
-            <FormParam name="client_id">{idp_client_id}</FormParam>
-            <FormParam name="client_secret">{idp_client_secret}</FormParam>
-            <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
-            <FormParam name="refresh_token">{oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token}</FormParam>
-        </FormParams>
-        <Verb>POST</Verb>
-    </Set>
-    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
-    <AssignVariable>
-        <Name>idp_target_url</Name>
-        <Ref>idp_token_endpoint</Ref>
-    </AssignVariable>
-    <AssignTo createNew="false" transport="http"/>
+  <DisplayName>AM-SetTokenRefreshRequest</DisplayName>
+  <Remove>
+    <Headers/>
+    <FormParams/>
+    <Payload/>
+  </Remove>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+      <Header name="Accept">application/json</Header>
+    </Headers>
+    <FormParams>
+      <FormParam name="client_id">{idp_client_id}</FormParam>
+      <FormParam name="client_secret">{idp_client_secret}</FormParam>
+      <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
+      <FormParam name="refresh_token">{oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token}</FormParam>
+    </FormParams>
+    <Verb>POST</Verb>
+  </Set>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignVariable>
+    <Name>idp_target_url</Name>
+    <Ref>idp_token_endpoint</Ref>
+  </AssignVariable>
+  <AssignTo createNew="false" transport="http"/>
 </AssignMessage>

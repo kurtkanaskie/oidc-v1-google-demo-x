@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyAPIKey async="false" continueOnError="false" enabled="true" name="VA-Variable">
+    <!-- NOTE: SmartDocs Drupal and Integrated use Authorization header, not form params -->
+    <!-- client_id is populated in Preflow -->
+    <Properties/>
+    <APIKey ref="client_id"/>
+</VerifyAPIKey>

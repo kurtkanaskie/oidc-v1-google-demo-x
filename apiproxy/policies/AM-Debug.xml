@@ -1,124 +1,124 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Debug">
-    <DisplayName>AM-Debug</DisplayName>
-    <Properties/>
+  <DisplayName>AM-Debug</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>debug_idp_auth_endpoint</Name>
+    <Ref>idp_auth_endpoint</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_token_endpoint</Name>
+    <Ref>idp_token_endpoint</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_userinfo_endpoint</Name>
+    <Ref>idp_userinfo_endpoint</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_revoke_endpoint</Name>
+    <Ref>idp_revoke_endpoint</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_client_id</Name>
+    <Ref>idp_client_id</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_client_secret</Name>
+    <Ref>idp_client_secret</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_scope</Name>
+    <Ref>idp_scope</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug_idp_edge_callback</Name>
+    <Ref>idp_edge_callback</Ref>
+  </AssignVariable>
+  <!--
     <AssignVariable>
-        <Name>debug_idp_auth_endpoint</Name>
-        <Ref>idp_auth_endpoint</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_token_endpoint</Name>
-        <Ref>idp_token_endpoint</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_userinfo_endpoint</Name>
-        <Ref>idp_userinfo_endpoint</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_revoke_endpoint</Name>
-        <Ref>idp_revoke_endpoint</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_client_id</Name>
-        <Ref>idp_client_id</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_client_secret</Name>
-        <Ref>idp_client_secret</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_scope</Name>
-        <Ref>idp_scope</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug_idp_edge_callback</Name>
-        <Ref>idp_edge_callback</Ref>
-    </AssignVariable>
-    <!--
-    <AssignVariable>
-        <Name>debug_app_client_id</Name>
-        <Ref>app_client_id</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRequestURI</Name>
-        <Ref>request.uri</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugPathSuffix</Name>
-        <Ref>proxy.pathsuffix</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRequest</Name>
-        <Ref>request.content</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugResponse</Name>
-        <Ref>response.content</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugTokenResponse</Name>
-        <Ref>tokenResponse.content</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugTokenResponseCode</Name>
-        <Ref>tokenResponse.status.code</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugIdentityResponseCode</Name>
-        <Ref>identityResponse.status.code</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugIdentityResponseReason</Name>
-        <Ref>identityResponse.reason.phrase</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshToken</Name>
-        <Ref>oauthv2accesstoken.OA-GenerateAccessTokenCode.refresh_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshTokenExpiresIn</Name>
-        <Ref>oauthv2accesstoken.OA-GenerateAccessTokenCode.refresh_token_expires_in</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshRefreshToken</Name>
-        <Ref>oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshRefreshTokenExpiresIn</Name>
-        <Ref>oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token_expires_in</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugAuthCodeAttributeExternalCode</Name>
-        <Ref>oauthv2authcode.OA-GetAuthCodeAttributes.external_code</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshAttributeExternalCode</Name>
-        <Ref>oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugRefreshAttributeIDToken</Name>
-        <Ref>oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_id_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugAccessAttributeIDToken</Name>
-        <Ref>oauthv2accesstoken.OA-GetAccessTokenAttributes.accesstoken.external_id_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugAccessAttributeRefreshToken</Name>
-        <Ref>oauthv2accesstoken.OA-GetAccessTokenAttributes.accesstoken.external_refresh_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debug.apigee.access_token</Name>
-        <Ref>apigee.access_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugProfileAccessAttributeExternalIDToken</Name>
-        <Ref>oauthv2accesstoken.OA-GetTokenProfileAttributes.accesstoken.external_id_token</Ref>
-    </AssignVariable>
-    <AssignVariable>
-        <Name>debugProfileAccessAttributeExternalRefreshToken</Name>
-        <Ref>oauthv2accesstoken.OA-GetTokenProfileAttributes.accesstoken.external_refresh_token</Ref>
-    </AssignVariable>
+  <Name>debug_app_client_id</Name>
+  <Ref>app_client_id</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRequestURI</Name>
+  <Ref>request.uri</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugPathSuffix</Name>
+  <Ref>proxy.pathsuffix</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRequest</Name>
+  <Ref>request.content</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugResponse</Name>
+  <Ref>response.content</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugTokenResponse</Name>
+  <Ref>tokenResponse.content</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugTokenResponseCode</Name>
+  <Ref>tokenResponse.status.code</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugIdentityResponseCode</Name>
+  <Ref>identityResponse.status.code</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugIdentityResponseReason</Name>
+  <Ref>identityResponse.reason.phrase</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshToken</Name>
+  <Ref>oauthv2accesstoken.OA-GenerateAccessTokenCode.refresh_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshTokenExpiresIn</Name>
+  <Ref>oauthv2accesstoken.OA-GenerateAccessTokenCode.refresh_token_expires_in</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshRefreshToken</Name>
+  <Ref>oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshRefreshTokenExpiresIn</Name>
+  <Ref>oauthv2accesstoken.OA-GenerateAccessTokenRefresh.refresh_token_expires_in</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugAuthCodeAttributeExternalCode</Name>
+  <Ref>oauthv2authcode.OA-GetAuthCodeAttributes.external_code</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshAttributeExternalCode</Name>
+  <Ref>oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugRefreshAttributeIDToken</Name>
+  <Ref>oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_id_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugAccessAttributeIDToken</Name>
+  <Ref>oauthv2accesstoken.OA-GetAccessTokenAttributes.accesstoken.external_id_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugAccessAttributeRefreshToken</Name>
+  <Ref>oauthv2accesstoken.OA-GetAccessTokenAttributes.accesstoken.external_refresh_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debug.apigee.access_token</Name>
+  <Ref>apigee.access_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugProfileAccessAttributeExternalIDToken</Name>
+  <Ref>oauthv2accesstoken.OA-GetTokenProfileAttributes.accesstoken.external_id_token</Ref>
+</AssignVariable>
+<AssignVariable>
+  <Name>debugProfileAccessAttributeExternalRefreshToken</Name>
+  <Ref>oauthv2accesstoken.OA-GetTokenProfileAttributes.accesstoken.external_refresh_token</Ref>
+</AssignVariable>
     -->
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
 </AssignMessage>

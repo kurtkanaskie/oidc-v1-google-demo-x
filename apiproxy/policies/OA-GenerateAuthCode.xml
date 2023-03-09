@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAuthCode">
-    <DisplayName>OA-GenerateAuthCode</DisplayName>
-    <Properties/>
-    <Attributes>
-        <Attribute name="external_code" ref="idp_code"/>
-    </Attributes>
-    <Operation>GenerateAuthorizationCode</Operation>
-    <ResponseType>app_response_type_code</ResponseType>
-    <RedirectUri>app_redirect_uri</RedirectUri>
-    <ClientId>app_client_id</ClientId>
-    <State>app_state</State>
-    <Scope>app_scope</Scope>
-    <SupportedGrantTypes/>
-    <GenerateResponse enabled="false"/>
-    <Tokens/>
+  <DisplayName>OA-GenerateAuthCode</DisplayName>
+  <Properties/>
+  <Attributes>
+    <Attribute name="external_code" ref="idp_code"/>
+  </Attributes>
+  <Operation>GenerateAuthorizationCode</Operation>
+  <ResponseType>app_response_type_code</ResponseType>
+  <RedirectUri>app_redirect_uri</RedirectUri>
+  <ClientId>app_client_id</ClientId>
+  <State>app_state</State>
+  <Scope>app_scope</Scope>
+  <SupportedGrantTypes/>
+  <GenerateResponse enabled="false"/>
+  <Tokens/>
 </OAuthV2>

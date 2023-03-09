@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetTokenCodeResponse">
-    <DisplayName>AM-SetTokenCodeResponse</DisplayName>
-    <Set>
-        <Headers/>
-        <QueryParams/>
-        <FormParams/>
-        <Path/>
-        <Payload contentType="application/json">
+  <DisplayName>AM-SetTokenCodeResponse</DisplayName>
+  <Set>
+    <Headers/>
+    <QueryParams/>
+    <FormParams/>
+    <Path/>
+    <Payload contentType="application/json">
 {
     "client_id": "{apigee.client_id}",
     "token_type": "Bearer",
@@ -30,7 +30,7 @@
     "organization_name": "{organization.name}"
 }
 </Payload>
-    </Set>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="response"/>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
 </AssignMessage>
