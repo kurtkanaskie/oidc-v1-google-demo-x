@@ -10,6 +10,8 @@ It provides the following endpoints
 
 The callback endpoint is used for the integration with GCP.
 
+For background, see GCP [OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect) and the [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/).
+
 See the [sequence diagram](oidc-v1-google-demo-wsd.png) for details on the interaction between Apigee and GCP.
 
 The solution demonstrates a full CI/CD lifecycle, apart from actually getting an access_token and using it in integration tests.
