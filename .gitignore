@@ -1,4 +1,5 @@
 edge-test_oauth-keys.json
+resources/edge/env/prod/kvms.json
 resources/edge/env/test/kvms.json
 node_modules
 target
