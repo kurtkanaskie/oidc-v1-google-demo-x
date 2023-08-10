@@ -12,7 +12,7 @@
             <Header name="Accept">application/json</Header>
         </Headers>
         <FormParams>
-            <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
+            <FormParam name="grant_type">{app_grant_type}</FormParam>
             <FormParam name="client_id">{idp_client_id}</FormParam>
             <FormParam name="client_secret">{idp_client_secret}</FormParam>
             <FormParam name="redirect_uri">{idp_edge_callback}</FormParam>

@@ -1,4 +1,5 @@
 /* globals context */
+
 var userinfoResponse = context.getVariable( 'response.content');
 var response = JSON.parse(userinfoResponse);
 

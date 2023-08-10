@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Debug">
-    <DisplayName>AM-Debug</DisplayName>
-    <Properties/>
+    <AssignVariable>
+        <Name>debug_system_uuid</Name>
+        <Ref>system.uuid</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>debug_region</Name>
+        <Ref>system.region.name</Ref>
+    </AssignVariable>
     <AssignVariable>
         <Name>debug_idp_auth_endpoint</Name>
         <Ref>idp_auth_endpoint</Ref>

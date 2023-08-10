@@ -45,55 +45,48 @@ This code is open source.
 
 ### Apigee X
 * Create your Integrated Portal and set the App callback URL.
-* Create and populate the KVM
-  * Via Maven using [apigee-api-facade](https://github.com/kurtkanaskie/apigee-api-facade-v1) (preferred)
-    * Deploy [apigee-api-facade](https://github.com/kurtkanaskie/apigee-api-facade-v1) in your org.
-    * In resources/edge/$ENV - copy kvms.json-dist and overwrite kvms.json then set values for client ID, secret and callback to this proxy.
-    * Use apigee-api-facade as the "apigee.hosturl" in pom.xml (change to your hostname)
-  * Via [kvm-admin-api](https://github.com/apigee/devrel/tree/main/references/kvm-admin-api)
-    * Deploy [kvm-admin-api](https://github.com/apigee/devrel/tree/main/references/kvm-admin-api) to your org.
-    * Use kvm-admin-v1 to set the values in the KVM using values from kvm-dist.json
-* Run maven to build and deploy the proxy and associated artifacts, including the OAS.
+* Run maven to build and deploy the proxy and associated artifacts, including the KVM and entries, and OAS.
 * Publish the OAS to the Integrated Portal.
 
 ### Maven
 Use maven to build and install the proxy, API product, App developer, App, download the App keys, and run integration tests.
-Maven will also deploy the OAS to your Drupal 8 and Integrated portal.
+Maven will also deploy the OAS to your Drupal portal, Integrated portal not supported yet.
 
 #### All at once
-* mvn -P test install
+```
+mvn -P test install
+```
 
-#### Just update the Drupal 8 API Specs
-* mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
-
-#### Just update the Integrated Portal API Specs
-Via process-resources after replacements or when in target
-* mvn -P test process-resources apigee-config:specs -Dapigee.config.options=update  -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
-* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=target/resources/edge
-
+#### Just update the Drupal API Specs
+```
+mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
+```
 Via the source without replacements
-* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
-
+```
+mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
+```
 ### Discrete Commands
-mvn -P "$ENV" jshint:lint \
-mvn -P "$ENV" frontend:install-node-and-npm@install-node-and-npm \
-mvn -P "$ENV" frontend:npm@npm-install \
-mvn -P "$ENV" frontend:npm@apigeelint \
-mvn -P "$ENV" frontend:npm@unit \
-mvn -P "$ENV" resources:copy-resources@copy-resources \
-mvn -P "$ENV" replacer:replace@replace \
-mvn -P "$ENV" apigee-config:targetservers \
-mvn -P "$ENV" apigee-config:resourcefiles \
-mvn -P "$ENV" apigee-config:keyvaluemaps -Dapigee.config.options=sync apigee-config:keyvaluemaps \
-mvn -P "$ENV" apigee-enterprise:configure \
-mvn -P "$ENV" apigee-enterprise:deploy \
-mvn -P "$ENV" apigee-config:apiproducts \
-mvn -P "$ENV" apigee-config:developers \
-mvn -P "$ENV" apigee-config:apps \
-mvn -P "$ENV" apigee-config:exportAppKeys \
+```
+mvn -P "$ENV" jshint:lint
+mvn -P "$ENV" frontend:install-node-and-npm@install-node-and-npm
+mvn -P "$ENV" frontend:npm@npm-install
+mvn -P "$ENV" frontend:npm@apigeelint
+mvn -P "$ENV" frontend:npm@unit
+mvn -P "$ENV" resources:copy-resources@copy-resources
+mvn -P "$ENV" replacer:replace@replace
+mvn -P "$ENV" apigee-config:targetservers
+mvn -P "$ENV" apigee-config:resourcefiles
+mvn -P "$ENV" apigee-config:keyvaluemaps -Dapigee.config.options=sync
+mvn -P "$ENV" apigee-enterprise:configure
+mvn -P "$ENV" apigee-enterprise:deploy
+mvn -P "$ENV" apigee-config:apiproducts
+mvn -P "$ENV" apigee-config:developers
+mvn -P "$ENV" apigee-config:apps
+mvn -P "$ENV" apigee-config:exportAppKeys
 mvn -P "$ENV" frontend:npm@integration
+```
 
-### Re-run integration tests
+### Run integration tests
 ```
 mvn -P $ENV resources:copy-resources@copy-resources replacer:replace@replace apigee-config:resourcefiles apigee-config:exportAppKeys frontend:npm@integration
 ```

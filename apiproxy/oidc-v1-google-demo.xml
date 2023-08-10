@@ -1,8 +1,8 @@
-<APIProxy revision="24" name="oidc-v1-google-demo">
+<APIProxy revision="56" name="oidc-v1-google-demo">
     <DisplayName>oidc-v1-google-demo</DisplayName>
-    <Description>GCP project &#34;Edge OIDC Demo&#34;. @DESCRIPTION</Description>
-    <CreatedAt>1657301600605</CreatedAt>
-    <LastModifiedAt>1657301600605</LastModifiedAt>
+    <Description>Set refresh token expiry to -1 max of 2 years. Adding well known endpoint. GCP project &#34;Edge OIDC Demo&#34;. @DESCRIPTION</Description>
+    <CreatedAt>1691611209568</CreatedAt>
+    <LastModifiedAt>1691611209568</LastModifiedAt>
     <BasePaths>/oidc-google/v1/oauth</BasePaths>
     <Policies>
         <Policy>RF-NotFound</Policy>
@@ -45,6 +45,7 @@
         <Policy>KV-Params</Policy>
         <Policy>AM-SetUserinfoRequest</Policy>
         <Policy>RF-NoRefresh</Policy>
+        <Policy>AM-SetWellKnownResponse</Policy>
     </Policies>
     <ProxyEndpoints>
         <ProxyEndpoint>default</ProxyEndpoint>

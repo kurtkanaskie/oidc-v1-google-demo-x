@@ -14,7 +14,7 @@
         <FormParams>
             <FormParam name="client_id">{idp_client_id}</FormParam>
             <FormParam name="client_secret">{idp_client_secret}</FormParam>
-            <FormParam name="grant_type">{request.formparam.grant_type}</FormParam>
+            <FormParam name="grant_type">{app_grant_type}</FormParam>
             <FormParam name="refresh_token">{oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token}</FormParam>
         </FormParams>
         <Verb>POST</Verb>

@@ -8,6 +8,9 @@
             <Step>
                 <Name>KV-Params</Name>
             </Step>
+            <Step>
+                <Name>AM-Debug</Name>
+            </Step>
         </Request>
         <Response/>
     </PreFlow>
@@ -199,6 +202,16 @@
             <Response/>
             <Condition>(proxy.pathsuffix MatchesPath "/revoke") and (request.verb = "POST")</Condition>
         </Flow>
+        <Flow name="well-known">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>AM-SetWellKnownResponse</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/.well-known/openid-configuration") and (request.verb = "GET")</Condition>
+        </Flow>
         <Flow name="not found">
             <Description/>
             <Request>
@@ -212,12 +225,9 @@
     </Flows>
     <HTTPProxyConnection>
         <BasePath>/oidc-google/v1/oauth</BasePath>
-        <Properties/>
-        <VirtualHost>secure-one-way</VirtualHost>
-        <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="defualt">
-        <!-- Only route to target on these conditions, redirects are handled with noroute -->
+        <!-- Only route to target on these conditions, redirects and well-known are handled with noroute -->
         <Condition>(proxy.pathsuffix MatchesPath "/userinfo") or 
                    (proxy.pathsuffix MatchesPath "/revoke") or 
                    (proxy.pathsuffix MatchesPath "/token")

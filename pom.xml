@@ -41,8 +41,7 @@
 			<id>test</id>
 			<properties>
 				<apigee.profile>test</apigee.profile>
-				<!-- <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl> -->
-				<apigee.hosturl>https://xapi-test.kurtkanaskie.net/apigee-api-facade</apigee.hosturl>
+				<apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.authtype>oauth</apigee.authtype>
 				<apigee.options>override</apigee.options>
@@ -221,11 +220,11 @@
 				</executions>
 			</plugin>
 
-			<!-- apigee Configuration -->
+			<!-- apigee Configuration prefix: apigee-config then goal (e.g. apigee-config:apiproducts) -->
 			<plugin>
 				<groupId>com.apigee.edge.config</groupId>
 				<artifactId>apigee-config-maven-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>2.4.5</version>
 				<executions>
 					<execution>
 						<id>create-config-targetserver</id>
@@ -330,7 +329,7 @@
 							<arguments>run apigeelint</arguments>
 						</configuration>
 					</execution>
-					<!--
+					<!-- No unit tests
 					<execution>
 						<id>unit</id>
 						<phase>validate</phase>
@@ -356,8 +355,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Tried putting another occurance of config-maven here, but didn't help -->
-
+			<!-- Why  does this run before integration? -->
 			<!-- apigee Smartdocs API Specs for Drupal-->
 			<plugin>
 				<groupId>com.apigee.smartdocs.config</groupId>

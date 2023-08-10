@@ -10,5 +10,9 @@
         <Name>app_request_authorization</Name>
         <Ref>request.header.authorization</Ref>
     </AssignVariable>
+    <AssignVariable>
+        <Name>app_grant_type</Name>
+        <Ref>request.formparam.grant_type</Ref>
+    </AssignVariable>
     <AssignTo createNew="false" transport="http" type="request"/>
 </AssignMessage>
