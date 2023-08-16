@@ -1,4 +1,4 @@
-/* globals print */
+// /* globals print */
 /* globals context */
 
 var expires_in = context.getVariable( 'ext_expires_in');

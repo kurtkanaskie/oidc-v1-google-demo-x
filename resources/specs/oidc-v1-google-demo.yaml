@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
+  version: 1.0.1
   title: oidc-v1-google-demo
-  description: OIDC protected resources using Authorization Code security.
+  description: OIDC protected resources using Authorization Code security with GCP IAM as IdP.
   contact:
     email: kurtkanaskie@google.com
 servers:

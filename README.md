@@ -54,16 +54,17 @@ Maven will also deploy the OAS to your Drupal portal, Integrated portal not supp
 
 #### All at once
 ```
-mvn -P test install
+mvn -P "$ENV" install
 ```
 
 #### Just update the Drupal API Specs
+Smartdocs is skipped by default since options is not set in profile.
 ```
-mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
+mvn -P "$ENV" process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
 ```
 Via the source without replacements
 ```
-mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
+mvn -P "$ENV" -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
 ```
 ### Discrete Commands
 ```
@@ -84,6 +85,7 @@ mvn -P "$ENV" apigee-config:developers
 mvn -P "$ENV" apigee-config:apps
 mvn -P "$ENV" apigee-config:exportAppKeys
 mvn -P "$ENV" frontend:npm@integration
+mvn -P "$ENV" process-resources apigee-smartdocs:apidoc
 ```
 
 ### Run integration tests
