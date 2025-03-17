@@ -1,0 +1,62 @@
+Title OpenId Connect Apigee to External IdP - Authorization Code Flow
+
+participant User as U
+participant User Agent\n(Browser) as UA
+participant Client App as App
+participant Apigee\nAPI as Apigee
+participant Open ID Provider\nAPI as IDP
+participant Logon\nApp as L
+participant Authorization Server\n(Authentication APIs) as AS
+participant Resource Server\n(Backend APIs) as RS
+
+note over Apigee,IDP: 
+Apigee registered with Exernal IdP
+as OAuth App for keys and callback
+end note
+
+note over App,Apigee: 
+App registered with Apigee
+for keys and callback
+end note
+
+U->UA: Open App
+UA->App: Initiate
+App->Apigee: GET /oidc/v1/authorize
+Apigee->Apigee: Cache App Data
+
+Apigee-->UA: 302 redirect to External IdP /authorize
+UA->IDP: Follow Redirect: GET External IdP /authorize
+IDP-->UA: Redirect to login page
+UA->L: Get login page
+L->UA: Return login page
+U->UA: Provide Credentials
+UA->L: Submit login
+L->AS: Validate Credentials
+AS->L: Validate Resposne
+L->UA: Display Consent Form
+U->UA: Provide Consent
+UA->L: Submit Consent
+
+L-->Apigee: 302 redirect to /callback {external_auth_code}
+Apigee->Apigee: Lookup App Data\nAssociate {external_auth_code}
+Apigee-->UA: 302 redirect to App callback
+UA->App: Handle Redirect
+App->App: Extract Auth Code
+
+App->Apigee: POST /oidc/v1/token
+Apigee->Apigee: Retrieve {external_auth_code}
+Apigee->IDP: POST /oauth2/v2.0/token
+IDP-->Apigee: 200 OK {external_access_token}
+Apigee->Apigee: Generate Access Token\nAssociate {external_access_token}
+Apigee-->App: 200 OK {access_token} 
+
+opt Access protected resources
+App->Apigee: GET /resources\nAuthorization:Bearer {access_token}
+Apigee->Apigee: Verify Token\nRetrieve {external_access_token}
+alt invalid or expired
+Apigee-->App: 401 Unauthorized {access_token}
+end
+Apigee->RS: GET /backend/resources Authorization:Bearer {external_access_token}
+RS-->Apigee: 200 OK {resources details} 
+Apigee-->App: 200 OK {resources details}
+end
