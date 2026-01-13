@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetUserinfoRequest">
-    <DisplayName>AM-SetUserinfoRequest</DisplayName>
-    <Set>
-        <Headers>
-            <Header name="authorization">Bearer {accesstoken.external_access_token}</Header>
-            <Header name="Accept">application/json</Header>
-        </Headers>
-        <Verb>GET</Verb>
-    </Set>
+  <DisplayName>AM-SetUserinfoRequest</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="authorization">Bearer {accesstoken.external_access_token}</Header>
+      <Header name="Accept">application/json</Header>
+    </Headers>
+    <Verb>GET</Verb>
+  </Set>
+  <AssignVariable>
+    <Name>idp_target_url</Name>
+    <Ref>idp_userinfo_endpoint</Ref>
+  </AssignVariable>
+  <!--
     <AssignVariable>
-        <Name>idp_target_url</Name>
-        <Ref>idp_userinfo_endpoint</Ref>
-    </AssignVariable>
-    <!--
-    <AssignVariable>
-        <Name>target.url</Name>
-        <Template>https://{idp_host}/{idp_userinfo}</Template>
-    </AssignVariable>
+  <Name>target.url</Name>
+  <Template>https://{idp_host}/{idp_userinfo}</Template>
+</AssignVariable>
     -->
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="request"/>
+<IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+<AssignTo createNew="false" transport="http" type="request"/>
 </AssignMessage>

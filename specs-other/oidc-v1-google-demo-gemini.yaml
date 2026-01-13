@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: OAuth 2.1 and OpenID Connect (OIDC) API
+  description: |
+    Standardized OAuth 2.1 and OIDC endpoints. 
+    Note: OAuth 2.1 mandates PKCE for all clients.
+  version: 1.0.0
+
+servers:
+  - url: https://m-xapi-test.kurtkanaskie.net/oidc-google/v1/oauth
+
+paths:
+  /.well-known/openid-configuration:
+    get:
+      operationId: getOpenIdConfiguration
+      summary: OIDC Discovery Endpoint
+      responses:
+        '200':
+          description: Metadata about the server's configuration.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /authorize:
+    get:
+      operationId: authorizeUser
+      summary: Authorization Endpoint
+      parameters:
+        - name: response_type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [code]
+        - name: client_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: redirect_uri
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          schema:
+            type: string
+        - name: code_challenge
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: code_challenge_method
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [S256]
+      responses:
+        '302':
+          description: Redirects to login or redirect_uri.
+
+  /token:
+    post:
+      operationId: exchangeToken
+      summary: Token Endpoint
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  enum: [authorization_code, refresh_token]
+                code:
+                  type: string
+                redirect_uri:
+                  type: string
+                client_id:
+                  type: string
+                code_verifier:
+                  type: string
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: Successful token exchange.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+
+  /userinfo:
+    get:
+      operationId: getUserInfo
+      summary: OIDC UserInfo Endpoint
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Returns claims about the authenticated user.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /revoke:
+    post:
+      operationId: revokeToken
+      summary: Token Revocation (RFC 7009)
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                token_type_hint:
+                  type: string
+                  enum: [access_token, refresh_token]
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+      responses:
+        '200':
+          description: Token revoked successfully.
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    TokenResponse:
+      type: object
+      required:
+        - access_token
+        - token_type
+      properties:
+        access_token:
+          type: string
+        id_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          example: 3600

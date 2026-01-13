@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-Debug-Custom">
+  <!--App -->
+  <AssignVariable>
+    <Name>debug-app-kurt-custom-app-1</Name>
+    <Value>not-found</Value>
+    <!--OAuth only-->
+    <Ref>app.kurt-custom-app-1</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug-verifyapikey-VA-QueryParam-kurt-custom-app-1</Name>
+    <Value>not-found</Value>
+    <!--Verify API Key only-->
+    <Ref>verifyapikey.VA-QueryParam.kurt-custom-app-1</Ref>
+  </AssignVariable>
+  <!---->
+  <!--API Product-->
+  <AssignVariable>
+    <Name>debug-apiproduct-kurt-custom-apiproduct-1</Name>
+    <Value>not-found</Value>
+    <!--OAuth only -->
+    <Ref>apiproduct.kurt-custom-apiproduct-1</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug-verifyapikey-VA-QueryParam-apiproduct-kurt-custom-apiproduct-1</Name>
+    <Value>not-found</Value>
+    <!--Verify API Key only-->
+    <Ref>verifyapikey.VA-QueryParam.apiproduct.kurt-custom-apiproduct-1</Ref>
+  </AssignVariable>
+  <!---->
+  <!--Developer-->
+  <AssignVariable>
+    <Name>debug-developer-kurt-custom-developer-1</Name>
+    <Value>not-found</Value>
+    <!--OAuth only -->
+    <Ref>developer.kurt-custom-developer-1</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>debug-verifyapikey-VA-QueryParam-apiproduct-kurt-custom-apiproduct-1</Name>
+    <Value>not-found</Value>
+    <!--Verify API Key only-->
+    <Ref>verifyapikey.VA-QueryParam.developer.kurt-custom-developer-1</Ref>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

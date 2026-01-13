@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-RevokeAccessToken">
-    <DisplayName>OA-RevokeAccessToken</DisplayName>
-    <Operation>InvalidateToken</Operation>
-    <Tokens>
-        <Token type="accesstoken" cascade="true">access_token</Token>
-    </Tokens>
+  <DisplayName>OA-RevokeAccessToken</DisplayName>
+  <Operation>InvalidateToken</Operation>
+  <Tokens>
+    <Token type="accesstoken" cascade="true">access_token</Token>
+  </Tokens>
 </OAuthV2>

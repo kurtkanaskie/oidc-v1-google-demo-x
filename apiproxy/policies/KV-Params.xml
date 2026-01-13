@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KV-Params" mapIdentifier="oidc-v1-google-demo">
-    <DisplayName>KV-Params</DisplayName>
-    <ExclusiveCache>false</ExclusiveCache>
-    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
-    <Get assignTo="idp_auth_endpoint" index="1">
-        <Key>
-            <Parameter>idp_auth_endpoint</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_token_endpoint" index="1">
-        <Key>
-            <Parameter>idp_token_endpoint</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_userinfo_endpoint" index="1">
-        <Key>
-            <Parameter>idp_userinfo_endpoint</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_revoke_endpoint" index="1">
-        <Key>
-            <Parameter>idp_revoke_endpoint</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_client_id" index="1">
-        <Key>
-            <Parameter>idp_client_id</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_client_secret" index="1">
-        <Key>
-            <Parameter>idp_client_secret</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_scope" index="1">
-        <Key>
-            <Parameter>idp_scope</Parameter>
-        </Key>
-    </Get>
-    <Get assignTo="idp_edge_callback" index="1">
-        <Key>
-            <Parameter>idp_edge_callback</Parameter>
-        </Key>
-    </Get>
-    <Scope>environment</Scope>
+  <DisplayName>KV-Params</DisplayName>
+  <ExclusiveCache>false</ExclusiveCache>
+  <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+  <Get assignTo="idp_auth_endpoint" index="1">
+    <Key>
+      <Parameter>idp_auth_endpoint</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_token_endpoint" index="1">
+    <Key>
+      <Parameter>idp_token_endpoint</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_userinfo_endpoint" index="1">
+    <Key>
+      <Parameter>idp_userinfo_endpoint</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_revoke_endpoint" index="1">
+    <Key>
+      <Parameter>idp_revoke_endpoint</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_client_id" index="1">
+    <Key>
+      <Parameter>idp_client_id</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_client_secret" index="1">
+    <Key>
+      <Parameter>idp_client_secret</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_scope" index="1">
+    <Key>
+      <Parameter>idp_scope</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="idp_proxy_callback" index="1">
+    <Key>
+      <Parameter>idp_proxy_callback</Parameter>
+    </Key>
+  </Get>
+  <Scope>environment</Scope>
 </KeyValueMapOperations>

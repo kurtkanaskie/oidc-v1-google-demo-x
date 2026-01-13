@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-GenerateAccessTokenCode">
-    <DisplayName>OA-GenerateAccessTokenCode</DisplayName>
-    <Properties/>
-    <Attributes>
-        <Attribute name="external_access_token" ref="ext_access_token"/>
-        <Attribute name="external_refresh_token" ref="ext_refresh_token"/>
-        <Attribute name="external_id_token" ref="ext_id_token"/>
-    </Attributes>
-    <!-- Set in JS-CalculateExpiresIn.js -->
-    <!-- default 30 minutes -->
-    <ExpiresIn ref="token_expires_in">1800000</ExpiresIn>
-    <!-- default 8 hours, should be -1 -->
-    <RefreshTokenExpiresIn ref="refresh_token_expires_in">28800000</RefreshTokenExpiresIn>
-    <ExternalAuthorization>false</ExternalAuthorization>
-    <Operation>GenerateAccessToken</Operation>
-    <GrantType>request.formparam.grant_type</GrantType>
-    <SupportedGrantTypes>
-        <GrantType>authorization_code</GrantType>
-    </SupportedGrantTypes>
-    <GenerateResponse enabled="false"/>
+  <DisplayName>OA-GenerateAccessTokenCode</DisplayName>
+  <Properties/>
+  <Attributes>
+    <Attribute name="external_access_token" ref="ext_access_token"/>
+    <Attribute name="external_refresh_token" ref="ext_refresh_token"/>
+    <Attribute name="external_id_token" ref="ext_id_token"/>
+  </Attributes>
+  <!-- Set in JS-CalculateExpiresIn.js -->
+  <!-- default 30 minutes -->
+  <ExpiresIn ref="token_expires_in">1800000</ExpiresIn>
+  <!-- default 8 hours, should be -1 -->
+  <RefreshTokenExpiresIn ref="refresh_token_expires_in">28800000</RefreshTokenExpiresIn>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>GenerateAccessToken</Operation>
+  <GrantType>request.formparam.grant_type</GrantType>
+  <SupportedGrantTypes>
+    <GrantType>authorization_code</GrantType>
+  </SupportedGrantTypes>
+  <GenerateResponse enabled="false"/>
 </OAuthV2>

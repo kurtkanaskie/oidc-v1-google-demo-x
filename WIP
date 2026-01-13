@@ -1,0 +1,10 @@
+WIP
+_ Smart Docs and image
+X KVM and entries
+X improves JS set expery times
+X offline and refresh token fixes
+X why no refresh token, I'm setting access_type=offline - need to log out first.
+	https://developers.google.com/identity/openid-connect/openid-connect#refresh-tokens
+
+TODO
+_ Apickli test to get token and use it.

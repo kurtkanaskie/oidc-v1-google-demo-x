@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AssignMessage continueOnError="false" enabled="true" name="AM-SetWellKnownResponse">
-    <AssignVariable>
-        <Name>URL</Name>
-        <Template>https://{request.header.host}/{proxy.basepath}</Template>
-    </AssignVariable>
-    <Set>
-        <Headers/>
-        <QueryParams/>
-        <FormParams/>
-        <Path/>
-        <Payload contentType="application/json">
+  <AssignVariable>
+    <Name>URL</Name>
+    <Template>https://{request.header.host}/{proxy.basepath}</Template>
+  </AssignVariable>
+  <Set>
+    <Headers/>
+    <QueryParams/>
+    <FormParams/>
+    <Path/>
+    <Payload contentType="application/json">
 {
 	"userinfo_endpoint": "{URL}/v1/userinfo",
 	"jwks_uri": "{URL}/openid/connect/jwks.json",
@@ -63,6 +63,6 @@
 	]
 }
 </Payload>
-    </Set>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
 </AssignMessage>

@@ -1,238 +1,244 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="default">
-    <PreFlow name="PreFlow">
-        <Request>
-            <Step>
-                <Name>CORS</Name>
-            </Step>
-            <Step>
-                <Name>KV-Params</Name>
-            </Step>
-            <Step>
-                <Name>AM-Debug</Name>
-            </Step>
-        </Request>
-        <Response/>
-    </PreFlow>
-    <PostFlow name="PostFlow">
-        <Request/>
-        <Response/>
-    </PostFlow>
-    <Flows>
-        <Flow name="authorize">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>VA-QueryParam</Name>
-                </Step>
-                <Step>
-                    <Name>EV-AuthorizeParams</Name>
-                </Step>
-                <Step>
-                    <Name>AM-AuthSession</Name>
-                </Step>
-                <Step>
-                    <Name>PC-Session</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Condition>(app_response_type Equals "code"</Condition>
-                    <Name>AM-RedirectLoginApplicationCode</Name>
-                </Step>
-            </Response>
-            <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize")</Condition>
-        </Flow>
-        <Flow name="callback">
-            <Description>Redirect URL for ApigeeEdgeTest app in IdP</Description>
-            <Request>
-                <Step>
-                    <Name>EV-CallbackParams</Name>
-                </Step>
-                <Step>
-                    <Name>LC-Session</Name>
-                </Step>
-                <Step>
-                    <Name>EV-AuthSession</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetResponseType</Name>
-                </Step>
-                <Step>
-                    <Name>OA-GenerateAuthCode</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Condition>(idp_error != "access_denied")</Condition>
-                    <Name>AM-RedirectAppCallback</Name>
-                </Step>
-                <Step>
-                    <Condition>(idp_error == "access_denied")</Condition>
-                    <Name>AM-RedirectAppCallbackError</Name>
-                </Step>
-            </Response>
-            <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback") and (request.queryparam.state Matches "code*")</Condition>
-        </Flow>
-        <Flow name="token - code">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>VA-FormParam</Name>
-                </Step>
-                <Step>
-                    <Name>OA-GetAuthCodeAttributes</Name>
-                </Step>
-                <Step>
-                    <Condition>(oauthv2authcode.OA-GetAuthCodeAttributes.external_code == null)</Condition>
-                    <Name>RF-NoCode</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SaveRequest</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetTokenCodeRequest</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Name>EV-GetExternalTokenValues</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetRequest</Name>
-                </Step>
-                <Step>
-                    <Name>DJ-IDToken</Name>
-                </Step>
-                <Step>
-                    <Name>JS-CalculateExpiresIn</Name>
-                </Step>
-                <Step>
-                    <Name>OA-GenerateAccessTokenCode</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetTokenCodeResponse</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/token") and 
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>CORS</Name>
+      </Step>
+      <Step>
+        <Name>KV-Params</Name>
+      </Step>
+      <Step>
+        <Name>AM-Debug</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="authorize">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>VA-QueryParam</Name>
+        </Step>
+        <Step>
+          <Name>AM-Debug-Custom</Name>
+        </Step>
+        <Step>
+          <Name>EV-AuthorizeParams</Name>
+        </Step>
+        <Step>
+          <Name>AM-AuthSession</Name>
+        </Step>
+        <Step>
+          <Name>PC-Session</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Condition>(app_response_type Equals "code"</Condition>
+          <Name>AM-RedirectLoginApplicationCode</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize")</Condition>
+    </Flow>
+    <Flow name="callback">
+      <Description>Redirect URL for ApigeeEdgeTest app in IdP</Description>
+      <Request>
+        <Step>
+          <Name>EV-CallbackParams</Name>
+        </Step>
+        <Step>
+          <Name>LC-Session</Name>
+        </Step>
+        <Step>
+          <Name>EV-AuthSession</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetResponseType</Name>
+        </Step>
+        <Step>
+          <Name>OA-GenerateAuthCode</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Condition>(idp_error != "access_denied")</Condition>
+          <Name>AM-RedirectAppCallback</Name>
+        </Step>
+        <Step>
+          <Condition>(idp_error == "access_denied")</Condition>
+          <Name>AM-RedirectAppCallbackError</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback") and (request.queryparam.state Matches "code*")</Condition>
+    </Flow>
+    <Flow name="token - code">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>VA-FormParam</Name>
+        </Step>
+        <Step>
+          <Name>OA-GetAuthCodeAttributes</Name>
+        </Step>
+        <Step>
+          <Condition>(oauthv2authcode.OA-GetAuthCodeAttributes.external_code == null)</Condition>
+          <Name>RF-NoCode</Name>
+        </Step>
+        <Step>
+          <Name>AM-SaveRequest</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetTokenCodeRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>EV-GetExternalTokenValues</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetRequest</Name>
+        </Step>
+        <Step>
+          <Name>DJ-IDToken</Name>
+        </Step>
+        <Step>
+          <Name>JS-CalculateExpiresIn</Name>
+        </Step>
+        <Step>
+          <Name>OA-GenerateAccessTokenCode</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetTokenCodeResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/token") and 
                        (request.verb = "POST") and 
                        (request.formparam.grant_type == "authorization_code")</Condition>
-        </Flow>
-        <Flow name="token - refresh">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>VA-FormParam</Name>
-                </Step>
-                <Step>
-                    <Name>OA-GetRefreshTokenAttributes</Name>
-                </Step>
-                <Step>
-                    <Condition>(oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token == null)</Condition>
-                    <Name>RF-NoRefresh</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SaveRequest</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetTokenRefreshRequest</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Name>EV-GetExternalTokenValues</Name>
-                </Step>
-                <Step>
-                    <Name>AM-ExternalRefreshToken</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetRequest</Name>
-                </Step>
-                <Step>
-                    <Name>DJ-IDToken</Name>
-                </Step>
-                <Step>
-                    <Name>JS-CalculateExpiresIn</Name>
-                </Step>
-                <Step>
-                    <Name>OA-GenerateAccessTokenRefresh</Name>
-                </Step>
-                <Step>
-                    <Condition>(ext_refresh_token == null)</Condition>
-                    <Name>OA-SetRefreshTokenAttributes</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetTokenRefreshResponse</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/token") and 
+    </Flow>
+    <Flow name="token - refresh">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>VA-FormParam</Name>
+        </Step>
+        <Step>
+          <Name>OA-GetRefreshTokenAttributes</Name>
+        </Step>
+        <Step>
+          <Condition>(oauthv2refreshtoken.OA-GetRefreshTokenAttributes.accesstoken.external_refresh_token == null)</Condition>
+          <Name>RF-NoRefresh</Name>
+        </Step>
+        <Step>
+          <Name>AM-SaveRequest</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetTokenRefreshRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>EV-GetExternalTokenValues</Name>
+        </Step>
+        <Step>
+          <Name>AM-ExternalRefreshToken</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetRequest</Name>
+        </Step>
+        <Step>
+          <Name>DJ-IDToken</Name>
+        </Step>
+        <Step>
+          <Name>JS-CalculateExpiresIn</Name>
+        </Step>
+        <Step>
+          <Name>OA-GenerateAccessTokenRefresh</Name>
+        </Step>
+        <Step>
+          <Condition>(ext_refresh_token == null)</Condition>
+          <Name>OA-SetRefreshTokenAttributes</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetTokenRefreshResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/token") and 
                        (request.verb = "POST") and 
                        (request.formparam.grant_type == "refresh_token")</Condition>
-        </Flow>
-        <Flow name="userinfo">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>OA-VerifyAccessToken</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetUserinfoRequest</Name>
-                </Step>
-            </Request>
-            <Response>
-                <Step>
-                    <Name>JS-SetUserinfoResponse</Name>
-                </Step>
-            </Response>
-            <Condition>(proxy.pathsuffix MatchesPath "/userinfo") and (request.verb = "GET")</Condition>
-        </Flow>
-        <Flow name="revoke">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>OA-VerifyAccessToken</Name>
-                </Step>
-                <Step>
-                    <Name>OA-RevokeAccessToken</Name>
-                </Step>
-                <Step>
-                    <Name>AM-SetTokenRevokeRequest</Name>
-                </Step>
-            </Request>
-            <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/revoke") and (request.verb = "POST")</Condition>
-        </Flow>
-        <Flow name="well-known">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>AM-SetWellKnownResponse</Name>
-                </Step>
-            </Request>
-            <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/.well-known/openid-configuration") and (request.verb = "GET")</Condition>
-        </Flow>
-        <Flow name="not found">
-            <Description/>
-            <Request>
-                <Step>
-                    <Name>RF-NotFound</Name>
-                </Step>
-            </Request>
-            <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "**")</Condition>
-        </Flow>
-    </Flows>
-    <HTTPProxyConnection>
-        <BasePath>/oidc-google/v1/oauth</BasePath>
-    </HTTPProxyConnection>
-    <RouteRule name="defualt">
-        <!-- Only route to target on these conditions, redirects and well-known are handled with noroute -->
-        <Condition>(proxy.pathsuffix MatchesPath "/userinfo") or 
+    </Flow>
+    <Flow name="userinfo">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>OA-VerifyAccessToken</Name>
+        </Step>
+        <Step>
+          <Name>AM-Debug-Custom</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetUserinfoRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>JS-SetUserinfoResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/userinfo") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="revoke">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>OA-VerifyAccessToken</Name>
+        </Step>
+        <Step>
+          <Name>OA-RevokeAccessToken</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetTokenRevokeRequest</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/revoke") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="well-known">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SetWellKnownResponse</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/.well-known/openid-configuration") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="not found">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "**")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/oidc-google/v1/oauth</BasePath>
+  </HTTPProxyConnection>
+  <RouteRule name="defualt">
+    <!-- Only route to target on these conditions, redirects and well-known are handled with noroute -->
+    <Condition>(proxy.pathsuffix MatchesPath "/userinfo") or 
                    (proxy.pathsuffix MatchesPath "/revoke") or 
                    (proxy.pathsuffix MatchesPath "/token")
         </Condition>
-        <TargetEndpoint>default</TargetEndpoint>
-    </RouteRule>
-    <RouteRule name="noroute"/>
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="noroute"/>
 </ProxyEndpoint>

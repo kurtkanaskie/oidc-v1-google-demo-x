@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
-  version: 1.0.1
+  version: 1.0.0
   title: oidc-v1-google-demo
-  description: OIDC protected resources using Authorization Code security with GCP IAM as IdP.
+  description: OIDC protected resources using Authorization Code security.
   contact:
     email: kurtkanaskie@google.com
 servers:
@@ -50,16 +50,7 @@ components:
   securitySchemes:
     AuthorizationCode:
       type: oauth2
-      description: |
-        See https://developerx.kurtkanaskie.net/docs/get-started-authoriztion-code
-        * https://m-xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/token
-        * https://m-xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/authorize
-        Test client oidc-exco-integrated-portal (developeri)
-        * ID: vWDwS8GyYypAS3ZfEf3N4LvaBDf663PW8bIIAqbAFgq53FTH
-        * Secret: VVkOLj8kxFiJYh6j17IvV3c7ux4ouib975GpsrTwTXGvRVFfxvPTWbAR48mJaUIT
-        Test oidc-demo-drupal10-portal (pantheon)
-        * ID: wGxE2AuxxwLIsc6DGirpxrRPbtopvE1BKpm3hAEOuSxVWYcn
-        * Secret: Qgh97d7AEh5DGqNvERNGlspyl0zIKwI8djowDZ0v5TOaj34noiKcsU5sApqE0qe6
+      description: See https://developeri.kurtkanaskie.net/docs/get-started-authoriztion-code
       flows: 
         authorizationCode:
           tokenUrl: https://m-xapi-test.kurtkanaskie.net/oidc-google/v1/oauth/token
